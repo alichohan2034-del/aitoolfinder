@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover, explore and compare the best AI tools for productivity, writing, design, video and business.">
+<title>AIToolFinder – Discover Your Next AI Tool</title>
+<style>
+:root {
+  --bg:#090b18;
+  --panel:#12152a;
+  --panel2:#191d36;
+  --purple:#9065ff;
+  --blue:#638cff;
+  --text:#f4f2ff;
+  --muted:#a4a7c0;
+  --border:#292d49;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+header{
+  padding:22px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.logo{font-size:24px;font-weight:bold}
+.logo span{color:var(--purple)}
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:22px;
+  font-size:14px;
+}
+nav a:hover{color:white}
+.hero{
+  text-align:center;
+  padding:85px 20px 65px;
+  background:radial-gradient(ellipse at top,#27204e 0%,var(--bg) 65%);
+}
+.tag{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid #51417c;
+  border-radius:30px;
+  color:#c5adff;
+  font-size:12px;
+}
+h1{
+  font-size:clamp(38px,6vw,65px);
+  margin:24px 0 15px;
+  line-height:1.1;
+}
+h1 span{
+  background:linear-gradient(90deg,#a78bff,#62a4ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.7;
+  max-width:600px;
+  margin:0 auto 30px;
+}
+.search{
+  max-width:620px;
+  margin:auto;
+  display:flex;
+  background:var(--panel);
+  border:1px solid #45416b;
+  padding:7px;
+  border-radius:13px;
+}
+.search input{
+  flex:1;
+  min-width:0;
+  background:transparent;
+  border:0;
+  outline:0;
+  color:white;
+  padding:13px;
+  font-size:15px;
+}
+.search button,.primary{
+  background:linear-gradient(110deg,var(--purple),var(--blue));
+  border:0;
+  color:white;
+  border-radius:9px;
+  padding:13px 22px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:55px;
+  margin-top:35px;
+  color:var(--muted);
+  font-size:13px;
+}
+.stats strong{
+  display:block;
+  color:white;
+  font-size:21px;
+  margin-bottom:5px;
+}
+main{max-width:1200px;margin:auto;padding:55px 22px}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+h2{font-size:27px;margin:0 0 8px}
+.section-head p{color:var(--muted);margin:0;font-size:14px}
+.filters{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.filter{
+  border:1px solid var(--border);
+  background:var(--panel);
+  color:var(--muted);
+  border-radius:25px;
+  padding:10px 17px;
+  cursor:pointer;
+}
+.filter.active,.filter:hover{
+  background:#302454;
+  border-color:var(--purple);
+  color:white;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.tool{
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:21px;
+  transition:.2s;
+}
+.tool:hover{
+  transform:translateY(-4px);
+  border-color:#7659c9;
+}
+.tool-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.tool-icon{
+  width:48px;height:48px;
+  border-radius:12px;
+  display:grid;place-items:center;
+  background:#30264e;
+  font-size:24px;
+}
+.category{
+  color:#c3aaff;
+  background:#2c2345;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:11px;
+}
+.tool h3{margin:19px 0 9px;font-size:19px}
+.tool p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+  min-height:44px;
+}
+.tool-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:18px;
+}
+.visit{
+  color:#c4adff;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:13px;
+}
+.visit:hover{color:white}
+.save{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:8px;
+  padding:7px 10px;
+  cursor:pointer;
+}
+.save.saved{color:#ff8cb8;border-color:#a44d79}
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  color:var(--muted);
+  padding:45px;
+}
+.about{
+  margin-top:75px;
+  padding:35px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  text-align:center;
+}
+.about p{
+  color:var(--muted);
+  max-width:700px;
+  margin:12px auto;
+  line-height:1.8;
+}
+footer{
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:30px 15px;
+  color:var(--muted);
+  font-size:13px;
+}
+footer a{color:#c4adff;text-decoration:none;margin:0 8px}
+@media(max-width:850px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  nav a{margin-left:10px}
+}
+@media(max-width:560px){
+  header{padding:18px 5%;flex-wrap:wrap;gap:15px}
+  nav a{margin:0 10px 0 0}
+  .hero{padding-top:60px}
+  .stats{gap:20px}
+  .grid{grid-template-columns:1fr}
+  .search button{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">AI<span>Tool</span>Finder.</div>
+  <nav>
+    <a href="#tools">Explore Tools</a>
+    <a href="#about">About</a>
+    <a href="mailto:hello@aitoolfinder.com">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="tag">✦ YOUR AI DISCOVERY HUB</span>
+  <h1>Find the Right AI Tool<br><span>For Every Task.</span></h1>
+  <p>Discover powerful AI tools to save time, boost creativity and make your work easier. Your next favourite tool starts here.</p>
+
+  <div class="search">
+    <input id="searchInput" type="search" placeholder="Search AI tools, categories..." aria-label="Search AI tools">
+    <button onclick="renderTools()">Search</button>
+  </div>
+
+  <div class="stats">
+    <div><strong>12+</strong>AI Tools</div>
+    <div><strong>06</strong>Categories</div>
+    <div><strong>100%</strong>Easy Discovery</div>
+  </div>
+</section>
+
+<main id="tools">
+  <div class="section-head">
+    <div>
+      <h2>Explore AI Tools</h2>
+      <p>Find the perfect tool for your next project.</p>
+    </div>
+    <span id="resultCount"></span>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter active" data-category="All">All Tools</button>
+    <button class="filter" data-category="Writing">Writing</button>
+    <button class="filter" data-category="Design">Design</button>
+    <button class="filter" data-category="Video">Video</button>
+    <button class="filter" data-category="Productivity">Productivity</button>
+    <button class="filter" data-category="Research">Research</button>
+  </div>
+
+  <div class="grid" id="toolGrid"></div>
+
+  <section class="about" id="about">
+    <h2>Discover More. Create Better.</h2>
+    <p>AIToolFinder helps students, creators, professionals and businesses discover useful artificial intelligence tools. Explore different categories and find solutions that fit your needs.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 AIToolFinder. All rights reserved.</p>
+  <p>
+    <a href="#about">About</a>
+    <a href="mailto:hello@aitoolfinder.com">Contact</a>
+    <a href="#tools">Explore Tools</a>
+  </p>
+  <p>Some tools may have paid plans. Please check their official websites.</p>
+</footer>
+
+<script>
+const tools = [
+  {name:"ChatGPT",icon:"🤖",category:"Productivity",description:"An AI assistant for writing, learning, brainstorming and everyday tasks.",url:"https://chatgpt.com"},
+  {name:"Claude",icon:"🧠",category:"Writing",description:"An AI assistant for writing, analysis, coding and complex tasks.",url:"https://claude.ai"},
+  {name:"Gemini",icon:"✨",category:"Productivity",description:"Google's AI assistant for ideas, research and everyday productivity.",url:"https://gemini.google.com"},
+  {name:"Jasper",icon:"✍️",category:"Writing",description:"AI-powered content creation for marketing teams and businesses.",url:"https://www.jasper.ai"},
+  {name:"Grammarly",icon:"📝",category:"Writing",description:"Improve grammar, clarity, tone and confidence in your writing.",url:"https://www.grammarly.com"},
+  {name:"Canva",icon:"🎨",category:"Design",description:"Create presentations, graphics and social media designs with AI features.",url:"https://www.canva.com"},
+  {name:"Adobe Firefly",icon:"🖼️",category:"Design",description:"Generate and edit creative images using Adobe's AI tools.",url:"https://firefly.adobe.com"},
+  {name:"Leonardo AI",icon:"🌌",category:"Design",description:"Create AI-generated artwork, images and visual concepts.",url:"https://leonardo.ai"},
+  {name:"Runway",icon:"🎬",category:"Video",description:"Explore AI-powered video generation and creative editing.",url:"https://runwayml.com"},
+  {name:"Pika",icon:"🎥",category:"Video",description:"Turn creative ideas into AI-generated video clips.",url:"https://pika.art"},
+  {name:"Perplexity",icon:"🔎",category:"Research",description:"Research questions with AI-powered answers and source links.",url:"https://www.perplexity.ai"},
+  {name:"Notion AI",icon:"📚",category:"Productivity",description:"Organise notes, summarise information and improve your workflow.",url:"https://www.notion.so/product/ai"}
+];
+
+let activeCategory = "All";
+let favorites = [];
+
+function renderTools(){
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const filtered = tools.filter(tool => {
+    const matchesCategory = activeCategory === "All" || tool.category === activeCategory;
+    const matchesSearch = (tool.name + " " + tool.description + " " + tool.category).toLowerCase().includes(query);
+    return matchesCategory && matchesSearch;
+  });
+
+  document.getElementById("resultCount").textContent = filtered.length + " tools found";
+  const grid = document.getElementById("toolGrid");
+
+  if(!filtered.length){
+    grid.innerHTML = '<div class="empty">No tools found. Try another search.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(tool => `
+    <article class="tool">
+      <div class="tool-top">
+        <div class="tool-icon">${tool.icon}</div>
+        <span class="category">${tool.category}</span>
+      </div>
+      <h3>${tool.name}</h3>
+      <p>${tool.description}</p>
+      <div class="tool-bottom">
+        <a class="visit" href="${tool.url}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a>
+        <button class="save ${favorites.includes(tool.name) ? "saved" : ""}" onclick="toggleFavorite('${tool.name}')">
+          ${favorites.includes(tool.name) ? "♥ Saved" : "♡ Save"}
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function toggleFavorite(name){
+  if(favorites.includes(name)){
+    favorites = favorites.filter(item => item !== name);
+  }else{
+    favorites.push(name);
+  }
+  renderTools();
+}
+
+document.getElementById("searchInput").addEventListener("input",renderTools);
+
+document.getElementById("filters").addEventListener("click",event => {
+  const button = event.target.closest("button[data-category]");
+  if(!button) return;
+  activeCategory = button.dataset.category;
+  document.querySelectorAll(".filter").forEach(item => item.classList.remove("active"));
+  button.classList.add("active");
+  renderTools();
+});
+
+renderTools();
+</script>
+</body>
+</html>
